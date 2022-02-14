@@ -1,0 +1,15 @@
+// Fonts
+
+
+$font-family-sans-serif : 'Ubuntu', 'Padauk',  sans-serif ;
+
+
+$primary : #1b9aaa ;
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import 'feather-icons-web/feather.css' ;
+
+.table td , .table th{
+    vertical-align: middle;
+}
