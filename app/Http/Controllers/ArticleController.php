@@ -14,14 +14,28 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function apiIndex(){
+
+        $articles = Article::when(isset(request()->search), function($q){
+
+            $search = request()->search ;
+            $q->where("title","like", "%$search%")->orwhere('description', "like", "%$search%") ;
+
+        })->with(['user', 'category'])->orderBy("id", "desc")->paginate(10) ;
+        return $articles ;
+
+    }
+    
     public function index()
     {
 
-        // $all = Article::all() ;
+        $all = Article::all() ;
         
         // foreach($all as $a){
         //     $a->slug = Str::slug($a->title)."-".uniqid() ;
         //     $a->category_slug = $a->category->title ;
+        //     $a->excerpt = Str::words($a->description, 50);
         //     $a->update() ;
         // }
 
@@ -62,6 +76,7 @@ class ArticleController extends Controller
         $article->title = $request->title ;
         $article->slug = Str::slug($request->title)."-".uniqid() ;
         $article->description = $request->description ;
+        $article->excerpt = Str::words($request->description, 50) ;
         $article->category_id = $request->category ;
         $article->user_id = Auth::id() ;
         $article->save();
@@ -113,6 +128,7 @@ class ArticleController extends Controller
         $article->title = $request->title ;
         $article->slug = Str::slug($request->title)."-".uniqid() ;
         $article->description = $request->description ;
+        $article->excerpt = Str::words($request->description, 50) ;
         $article->category_id = $request->category ;
         $article->category_slug = $article->category->title ;
         $article->update();
