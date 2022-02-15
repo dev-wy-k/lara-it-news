@@ -21,6 +21,7 @@ class ArticleController extends Controller
         
         // foreach($all as $a){
         //     $a->slug = Str::slug($a->title)."-".uniqid() ;
+        //     $a->category_slug = $a->category->title ;
         //     $a->update() ;
         // }
 
@@ -64,6 +65,9 @@ class ArticleController extends Controller
         $article->category_id = $request->category ;
         $article->user_id = Auth::id() ;
         $article->save();
+
+        $article->category_slug = $article->category->title ;
+        $article->update() ;
 
         return redirect()->route('article.index')->with('message', "New Article is Added") ;
 
@@ -110,6 +114,7 @@ class ArticleController extends Controller
         $article->slug = Str::slug($request->title)."-".uniqid() ;
         $article->description = $request->description ;
         $article->category_id = $request->category ;
+        $article->category_slug = $article->category->title ;
         $article->update();
 
         return redirect()->route('article.index')->with('message', "Article is Updated") ;

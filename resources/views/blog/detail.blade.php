@@ -15,7 +15,7 @@
     <div class="py-3">
 
         <div class="small post-category mb-3">
-            <a href="{{ route('category', $article->category->id) }}" rel="category tag">{{ $article->category->title }}</a>
+            <a href="{{ route('category', $article->category->title) }}" rel="category tag">{{ $article->category->title }}</a>
         </div>
 
         <h2 class="fw-bolder">{{ $article->title }}</h2>

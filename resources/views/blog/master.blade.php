@@ -60,7 +60,7 @@
                                 <ul class="list-group">
                                     @foreach($categories as $category)
                                     <li class="list-group-item">
-                                        <a href="{{ route('category', $category->id) }}" class="{{ request()->url() == route('category', $category->id) ? 'active' : '' }}">{{ $category->title }}</a>
+                                        <a href="{{ route('category', $category->title) }}" class="{{ request()->url() == route('category', $category->id) ? 'active' : '' }}">{{ $category->title }}</a>
                                     </li>
                                     @endforeach
 
@@ -113,7 +113,7 @@
                             <ul class="list-group">
                                 @foreach($categories as $category)
                                 <li class="list-group-item">
-                                    <a href="{{ route('category', $category->id) }}" class="{{ request()->url() == route('category', $category->id) ? 'active' : '' }}">{{ $category->title }}</a>
+                                    <a href="{{ route('category', $category->title) }}" class="{{ request()->url() == route('category', $category->id) ? 'active' : '' }}">{{ $category->title }}</a>
                                 </li>
                                 @endforeach
 

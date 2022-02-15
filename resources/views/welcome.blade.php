@@ -6,12 +6,12 @@
     @forelse($articles as $article)
     <div class="border-bottom mb-4 pb-4 article-preview">
         <div class="p-0 p-md-3">
-            <a class="fw-bold h4 d-block text-decoration-none" href="{{ route('detail', $article->id) }}">
+            <a class="fw-bold h4 d-block text-decoration-none" href="{{ route('detail', $article->slug) }}">
                 {{ $article->title }}
             </a>
 
             <div class="small post-category mb-3">
-                <a href="{{ route('category', $article->category->id) }}" rel="category tag">{{ $article->category->title }}</a>
+                <a href="{{ route('category', $article->category->title) }}" rel="category tag">{{ $article->category->title }}</a>
             </div>
 
             <div class="text-black-50 the-excerpt">
