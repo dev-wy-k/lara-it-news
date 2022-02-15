@@ -15,6 +15,7 @@ class AddColumnsToArticles extends Migration
     {
         Schema::table('articles', function (Blueprint $table) {
             $table->text('slug')->unique()->nullable()->after('title');
+            $table->string('category_slug')->nullable()->after('category_id');
         });
     }
 

@@ -26,14 +26,14 @@ class BlogController extends Controller
         return view('blog.detail', compact('article'));
     }
 
-    public function baseOnCategory($id){
+    public function baseOnCategory($slug){
         
         $articles = Article::when(isset(request()->search), function($q){
 
             $search = request()->search ;
             $q->where("title","like", "%$search%")->orwhere('description', "like", "%$search%") ;
 
-        })->where('category_id', $id)->with(['user', 'category'])->orderBy("id", "desc")->paginate(7) ;
+        })->where('category_slug', $slug)->with(['user', 'category'])->orderBy("id", "desc")->paginate(7) ;
         return view('welcome', compact('articles'));
 
     }
