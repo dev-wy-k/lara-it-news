@@ -60,9 +60,7 @@
 
                     <div class="form-group">
                         <label for="description">Article Descripton</label>
-                        <textarea name="description" form="createArticle" id="description" rows="15" class="form-control form-control-lg @error('description') is-invalid @enderror">
-                        {{ old('description') }}
-                        </textarea>
+                        <textarea name="description" form="createArticle" id="description" rows="15" class="form-control form-control-lg @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                         @error('description')
                         <small class="text-danger font-weight-bold">{{ $message }}</small>
                         @enderror

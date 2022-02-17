@@ -4,7 +4,8 @@
 @section('head')
 <style>
     .description{
-        white-space: break-spaces;
+        /* white-space: break-spaces; */
+        white-space: pre-line;
     }
 </style>
 @endsection
@@ -21,7 +22,7 @@
         <h2 class="fw-bolder">{{ $article->title }}</h2>
         <div class="my-3 feature-image-box">
             
-            <div class="d-block d-md-flex justify-content-between align-items-center my-3">
+            <div class="d-block d-md-flex justify-content-between align-items-center mt-3">
 
                 <div class="">
                     @if($article->user->photo)
@@ -29,7 +30,7 @@
                     @else
                     <img alt="" src="{{ asset('dashboard/img/user-photo.png') }}" class="avatar avatar-50 photo rounded-circle" height="30" width="30">
                     @endif 
-                    <a href="{{ route('user', $article->user->id) }}" class="ms-2 text-decoration-none">{{ $article->user->name }}</a>
+                    <a href="{{ route('user', $article->user->name) }}" class="ms-2 text-decoration-none">{{ $article->user->name }}</a>
                 </div>
 
                 <a href="{{ route('date', $article->created_at->format('Y-m-d')) }}" class="text-primary text-decoration-none">
