@@ -24,11 +24,15 @@
             <div class="d-flex justify-content-between align-items-center see-more-group">
                 <div class="d-flex align-items-center">
                     @if($article->user->photo)
-                    <img alt="" src="{{ asset('storage/profile/'.$article->user->photo) }}" class="avatar avatar-50 photo rounded-circle" height="50" width="50">
+                    <a href="{{ route('user', $article->user->name) }}">
+                        <img alt="" src="{{ asset('storage/profile/'.$article->user->photo) }}" class="avatar avatar-50 photo rounded-circle" height="50" width="50">
+                    </a>
                     @else
-                    <img alt="" src="{{ asset('dashboard/img/user-photo.png') }}" class="avatar avatar-50 photo rounded-circle" height="50" width="50">
+                    <a href="{{ route('user', $article->user->name) }}">
+                        <img alt="" src="{{ asset('dashboard/img/user-photo.png') }}" class="avatar avatar-50 photo rounded-circle" height="50" width="50"> 
+                    </a>
                     @endif
-                    <div class="ms-2">
+                    <div class="ms-2">                        
                         <span class="small">
                             <i class="feather-user"></i>
                             {{ $article->user->name }}

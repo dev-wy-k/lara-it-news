@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\User;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -38,9 +39,11 @@ class BlogController extends Controller
 
     }
 
-    public function baseOnUser($id){
+    public function baseOnUser($name){
+
+        $user = User::where("name", $name)->first();
         
-        $articles = Article::where('user_id', $id)->when(isset(request()->search), function($q){
+        $articles = Article::where('user_id', $user->id)->when(isset(request()->search), function($q){
 
             $search = request()->search ;
             $q->where("title","like", "%$search%")->orwhere('description', "like", "%$search%") ;
