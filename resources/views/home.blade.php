@@ -27,7 +27,6 @@
                     {{ env("App_Dev") }}
                     <br>
                     <br>
-                    {{ $categories }}
                 </div>
             </div>
         </div>
