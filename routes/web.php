@@ -26,28 +26,26 @@ Auth::routes();
 Route::get('auth/google', 'GoogleController@redirect')->name("gg.redirect");
 Route::get('auth/google/callback', 'GoogleController@callback')->name("gg.callback");
 
-Route::prefix("dashboard")->middleware('auth')->group( function(){
+Route::prefix("dashboard")->middleware('auth')->group(function () {
 
-    Route::resource("category", "CategoryController") ;
-    Route::resource("article", "articleController") ;
+    Route::resource("category", "CategoryController");
+    Route::resource("article", "ArticleCOntroller");
 
 
-    Route::prefix("profile")->middleware('auth')->group(function (){
-    
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::prefix("profile")->middleware('auth')->group(function () {
 
-    Route::get("/", "ProfileController@profile")->name("profile") ;
+        Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get("/edit-password", "ProfileController@editPassword")->name("profile.edit.password") ;
-    Route::post("/change-password", "ProfileController@changePassword")->name("profile.change.password") ;
+        Route::get("/", "ProfileController@profile")->name("profile");
 
-    Route::get('/edit-email', "ProfileController@editNameEmail")->name("profile.edit.name.email");
-    Route::post("/change-name", "ProfileController@changeName")->name("profile.changeName");
-    Route::post("/change-email", "ProfileController@changeEmail")->name("profile.changeEmail");
+        Route::get("/edit-password", "ProfileController@editPassword")->name("profile.edit.password");
+        Route::post("/change-password", "ProfileController@changePassword")->name("profile.change.password");
 
-    Route::get("/edit-photo", "ProfileController@editPhoto")->name("profile.edit.photo") ;
-    Route::post('/chnage-photo', "ProfileController@changePhoto")->name('profile.changePhoto');
+        Route::get('/edit-email', "ProfileController@editNameEmail")->name("profile.edit.name.email");
+        Route::post("/change-name", "ProfileController@changeName")->name("profile.changeName");
+        Route::post("/change-email", "ProfileController@changeEmail")->name("profile.changeEmail");
 
-});
-    
+        Route::get("/edit-photo", "ProfileController@editPhoto")->name("profile.edit.photo");
+        Route::post('/chnage-photo', "ProfileController@changePhoto")->name('profile.changePhoto');
+    });
 });
